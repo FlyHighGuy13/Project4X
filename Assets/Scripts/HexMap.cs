@@ -1,58 +1,56 @@
-﻿using System.Collections;
+﻿//===============================================================//
+//
+//  Program/File:     HexMap.cs
+//
+//  Description:      The HexMap Class Defines The Global Hex Grid
+//
+//  Author:           Logan Wilkovich
+//  Email:            LWilkovich@gmail.com
+//  Creation Date:    9 September 2018
+//===============================================================//
+//=======================//
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HexMap : MonoBehaviour {
 
-	// Use this for initialization
+    //=======================//
+	//Use this for initialization
 	void Start () {
-		drawMap();
-	}
-	
-	public void generateLand() {
-		return;
+        generateMap();
 	}
 
-	public void generateLandTerrain() {
-		return;
-	}
+    //=======================//
+    //Member Variables
+    public GameObject mHexPrefab;
+    public Material[] mHexMaterials;
+    public readonly int mNumRows = 20;
+    public readonly int mNumColumns = 40;
 
-	public GameObject mHexPrefab;
+    public void generateMap() {
+        for (int column = 0; column < mNumColumns; column++) {
 
-	public Material[] mHexMaterials;
+            for (int row = 0; row < mNumRows; row++) {
 
-	public void drawMap() {
-		for (float i = 0; i < 10; i++) {
-			for (float j = 0; j < 10; j++) {
-				float locationX = i;
-				float locationY = j;
-				// float radius = 1f;
-				// float height = 2;
-				float width = ((Mathf.Sqrt(3) / 2) * 2);
-				// float vert = height * 0.75f;
-				// float horiz = width;
-				if (j % 2 == 1) {
-					locationX = (i * width) + (width / 2);
-					locationY = (j /2) * 3;
-				}
-				else { 
-					locationX = i * width;
-					locationY = j + j / 2;
-				}
-				GameObject hexGo = (GameObject)Instantiate(
-							mHexPrefab,
-							new Vector3(locationX, 0, locationY),
-							Quaternion.identity,
-							this.transform);
-				
-				MeshRenderer mr =hexGo.GetComponentInChildren<MeshRenderer>();
-				mr.material = mHexMaterials[Random.Range(0, mHexMaterials.Length)];
-			}
-		}
-	}
+                Hex h = new Hex( column, row );
+                Vector3 pos = h.positionFromCamera( 
+                    Camera.main.transform.position, 
+                    mNumRows, 
+                    mNumColumns 
+                );
 
-	// Update is called once per frame
-	// void Update () {
-		
-	// }
+                GameObject hexGameObject = (GameObject)Instantiate(
+                    mHexPrefab, 
+                    pos,
+                    Quaternion.identity,
+                    this.transform
+                );
+                hexGameObject.GetComponent<HexComponent>().mHex = h;
+
+                MeshRenderer mr = hexGameObject.GetComponentInChildren<MeshRenderer>();
+                mr.material = mHexMaterials[ Random.Range(0, mHexMaterials.Length) ];
+            }
+        }
+    }
 }

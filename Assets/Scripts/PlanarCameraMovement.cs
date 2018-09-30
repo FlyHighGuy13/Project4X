@@ -8,7 +8,7 @@ using UnityEngine;
 	}
 	
 	// Update is called once per frame
-	public float mSpeed = 5.0f;
+	public float mSpeed = 10.0f;
 	void Update()
 	{
 		if(Input.GetKey(KeyCode.RightArrow))
