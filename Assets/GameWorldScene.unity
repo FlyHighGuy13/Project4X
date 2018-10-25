@@ -137,15 +137,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 205379549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 803fe44eecf546a4d92ae526cb43a9da, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a0b0ddc9e69b8641be5306e3567c3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mHexPrefab: {fileID: 1963759671522398, guid: 688ba16db0c092f469742f3cfdface2e, type: 2}
   mHexMaterials:
-  - {fileID: 2100000, guid: 48bc4fa349e475a47969919bf72835b5, type: 2}
-  - {fileID: 2100000, guid: 3d715d2ca0d78444d9d0c76ac0003963, type: 2}
-  - {fileID: 2100000, guid: 02459ed6d7e9a194ba4a83032cd2b6ac, type: 2}
   - {fileID: 2100000, guid: 2f0b3d2adf6521c4581974ee9a2f11c9, type: 2}
+  - {fileID: 2100000, guid: 48bc4fa349e475a47969919bf72835b5, type: 2}
+  - {fileID: 2100000, guid: 02459ed6d7e9a194ba4a83032cd2b6ac, type: 2}
+  - {fileID: 2100000, guid: 48bc4fa349e475a47969919bf72835b5, type: 2}
+  - {fileID: 2100000, guid: ae83ef39b99a336418a0410ba365e904, type: 2}
 --- !u!4 &205379551
 Transform:
   m_ObjectHideFlags: 0
@@ -246,7 +247,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1106650761}
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 10, z: -1}
+  m_LocalPosition: {x: 0, y: 20, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1991413031}
@@ -326,6 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1991413031}
+  - component: {fileID: 1991413032}
   m_Layer: 0
   m_Name: CameraPlane
   m_TagString: Untagged
@@ -347,3 +349,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1991413032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991413030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4349cb7d5e7741144bf2ced6eea385a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSpeed: 10

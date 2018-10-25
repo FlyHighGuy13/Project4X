@@ -32,8 +32,8 @@ public class HexComponent : MonoBehaviour {
 
         this.transform.position = mHex.positionFromCamera(
             Camera.main.transform.position,
-            mHexMap.mNumRows,
-            mHexMap.mNumColumns
+            mHexMap.getNumRows(),
+            mHexMap.getNumColumns()
         );
 	}
 }

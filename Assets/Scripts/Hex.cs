@@ -25,15 +25,21 @@ public class Hex {
     public readonly int mLocY;  // Row
     public readonly int mModS;
 
+    public float elevation = -0.5f;
+
     static readonly float mWidthMultiplier = Mathf.Sqrt(3) / 2;
 
     float mRadius = 1f;
-    bool mAllowWrapEastWest = true;
-    bool mAllowWrapNorthSouth = false;
+    public bool mAllowWrapEastWest = true;
+    public bool mAllowWrapNorthSouth = false;
 
     //=======================//
     //Returns The World-Space Position of This Hex
     public Vector3 hexPosition() {
+        // float newColumnSpacing = 0f;
+        // if (this.mLocY % 2 != 0) {
+        //     newColumnSpacing = 1f;
+        // }
         return new Vector3(
             hexHorizontalSpacing() * (this.mLocX + this.mLocY/2f),
             0,
@@ -89,4 +95,5 @@ public class Hex {
 
         return position;
     }
+    
 }
