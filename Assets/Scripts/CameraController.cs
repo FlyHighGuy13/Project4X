@@ -4,7 +4,7 @@ using UnityEngine;
  public class CameraController : MonoBehaviour {
  	// Use this for initialization
 	 private GameObject camera;
-	 private float mouseSpeed = 10.0f;
+	 private float mouseSpeed = 35.0f;
 	 private Texture2D cursorImage;
 
 	 private int screenWidth;
@@ -63,16 +63,16 @@ using UnityEngine;
 			transform.position -= new Vector3(0,1,0);
 			transform.position += new Vector3(0,0,1);
 		}
-		if(Input.GetKey(KeyCode.Mouse2))
+		if(Input.GetKey(KeyCode.Mouse0))
 		{
 			Cursor.SetCursor(cursorImage,Vector2.zero,CursorMode.Auto);
 			if(Input.GetAxis("Mouse X") > 0)
 			{
-				transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed); 
+				transform.position -= new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed); 
 			}
 			else if(Input.GetAxis("Mouse X") < 0)
 			{
-				transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed); 
+				transform.position -= new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed); 
 			}
 		}
         // if (Input.mousePosition.x > screenWidth)
