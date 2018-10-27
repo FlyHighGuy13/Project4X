@@ -51,6 +51,9 @@ public class HexMap : MonoBehaviour {
     //Member Variables
     // private float mLandTileCount = 0f;
     public GameObject mHexPrefab;
+    public GameObject mHexGrasslandHex;
+    public GameObject mHexDesertHex;
+    public GameObject mHexMountainHex;
     public Material[] mHexMaterials;
     private static int mRows = 30;
     private static int mColumns = 60;
@@ -93,7 +96,7 @@ public class HexMap : MonoBehaviour {
                     Quaternion.identity,
                     this.transform
                 );
-
+                
                 gameObjectLookupTable[h] = hexGameObject;
                 hexLookupTable[hexGameObject] = h;
 
@@ -120,22 +123,38 @@ public class HexMap : MonoBehaviour {
                 Hex h = hexTable[column, row];
                 GameObject hexGameObject = gameObjectLookupTable[h];
                 int renderIndex = 0;
-                if (h.elevation < 0f) {
+                if (h.elevation > 0.4f && h.elevation < 1.0f) {
                     renderIndex = 0;
+                    // Quaternion rotation = hexGameObject.transform.rotation;
+                    // rotation.y += 90;
+                    GameObject.Instantiate(mHexGrasslandHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
                 }
                 else if (h.elevation > 0f) {
-                    renderIndex = 1;
+                    // renderIndex = 1;
                 }
-                if (h.elevation > 1f) {
-                    renderIndex = 3;
+                if (h.elevation > 1.0f) {
+                    // renderIndex = 3;
+                    GameObject.Instantiate(mHexMountainHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
                 }
-                if (h.elevation < .4f && h.elevation > 0f) {
-                    renderIndex = 2;
+                if (h.elevation < 0.4f && h.elevation > 0f) {
+                    // renderIndex = 2;
+                    GameObject.Instantiate(mHexDesertHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
                 }
 
-                MeshRenderer mr = hexGameObject.GetComponentInChildren<MeshRenderer>();
-                mr.material = mHexMaterials[renderIndex];
-                hexGameObject.GetComponentInChildren<TextMesh>().text = string.Format("{0}", h.elevation);
+                if (h.elevation < 0f) {
+                    Vector3 hexPosition = hexGameObject.transform.position;
+                    hexPosition.y -= 1;
+                    GameObject waterFloor = GameObject.Instantiate(mHexPrefab, hexPosition, Quaternion.identity, hexGameObject.transform);
+                    MeshRenderer mr = waterFloor.GetComponentInChildren<MeshRenderer>();
+                    mr.material = mHexMaterials[3];
+
+                    mr = hexGameObject.GetComponentInChildren<MeshRenderer>();
+                    mr.material = mHexMaterials[renderIndex];
+                }
+
+                // MeshRenderer mr = hexGameObject.GetComponentInChildren<MeshRenderer>();
+                // mr.material = mHexMaterials[renderIndex];
+                // hexGameObject.GetComponentInChildren<TextMesh>().text = string.Format("{0}", h.elevation);
             }
         }
     }
