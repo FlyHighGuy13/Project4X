@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.45140266, g: 0.50089526, b: 0.57231885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -141,11 +141,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mHexPrefab: {fileID: 1963759671522398, guid: 688ba16db0c092f469742f3cfdface2e, type: 2}
+  mHexGrasslandHex: {fileID: 1850269362907668, guid: 649829b15775aaf40b0355ac34243bf0,
+    type: 2}
+  mHexDesertHex: {fileID: 1804220327636284, guid: 25a5434a5440e6f409c6d804686f82f7,
+    type: 2}
+  mHexMountainHex: {fileID: 1666024360089298, guid: dbf0896aac64c9c41a80468ee4fbe35b,
+    type: 2}
   mHexMaterials:
   - {fileID: 2100000, guid: 2f0b3d2adf6521c4581974ee9a2f11c9, type: 2}
   - {fileID: 2100000, guid: 48bc4fa349e475a47969919bf72835b5, type: 2}
   - {fileID: 2100000, guid: 02459ed6d7e9a194ba4a83032cd2b6ac, type: 2}
-  - {fileID: 2100000, guid: 48bc4fa349e475a47969919bf72835b5, type: 2}
+  - {fileID: 2100000, guid: 3d715d2ca0d78444d9d0c76ac0003963, type: 2}
   - {fileID: 2100000, guid: ae83ef39b99a336418a0410ba365e904, type: 2}
 --- !u!4 &205379551
 Transform:
@@ -312,13 +318,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1754653000}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.22414392, y: -0.48296294, z: 0.12940955, w: 0.8365163}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: -60, z: 0}
 --- !u!1 &1991413030
 GameObject:
   m_ObjectHideFlags: 0
