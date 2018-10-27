@@ -55,11 +55,13 @@ using UnityEngine;
 		}
 		if(Input.GetAxis("Mouse ScrollWheel") > 0)
 		{
-			camera.GetComponent<Camera>().fieldOfView--;
+			transform.position += new Vector3(0,1,0);
+			transform.position -= new Vector3(0,0,1);
 		}
 		if(Input.GetAxis("Mouse ScrollWheel") < 0)
 		{
-			camera.GetComponent<Camera>().fieldOfView++;
+			transform.position -= new Vector3(0,1,0);
+			transform.position += new Vector3(0,0,1);
 		}
 		if(Input.GetKey(KeyCode.Mouse2))
 		{
@@ -73,25 +75,25 @@ using UnityEngine;
 				transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed); 
 			}
 		}
-        if (Input.mousePosition.x > screenWidth)
-        {
-            transform.Translate(new Vector3(mSpeed * Time.deltaTime,0,0));
-        }
+        // if (Input.mousePosition.x > screenWidth)
+        // {
+        //     transform.Translate(new Vector3(mSpeed * Time.deltaTime,0,0));
+        // }
 
-        if (Input.mousePosition.x < 10 )
-        {
-            transform.Translate(new Vector3(-mSpeed * Time.deltaTime,0,0));
-        }
+        // if (Input.mousePosition.x < 10 )
+        // {
+        //     transform.Translate(new Vector3(-mSpeed * Time.deltaTime,0,0));
+        // }
 
-        if (Input.mousePosition.y > screenHeight)
-        {
-			transform.Translate(new Vector3(0,0,mSpeed * Time.deltaTime));
-        }
+        // if (Input.mousePosition.y > screenHeight)
+        // {
+		// 	transform.Translate(new Vector3(0,0,mSpeed * Time.deltaTime));
+        // }
 
-        if (Input.mousePosition.y < 0)
-        {
-            transform.Translate(new Vector3(0,0,-mSpeed * Time.deltaTime));
-        }
+        // if (Input.mousePosition.y < 0)
+        // {
+        //     transform.Translate(new Vector3(0,0,-mSpeed * Time.deltaTime));
+        // }
 	}
 }
 
