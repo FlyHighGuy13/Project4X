@@ -123,25 +123,21 @@ public class HexMap : MonoBehaviour {
                 Hex h = hexTable[column, row];
                 GameObject hexGameObject = gameObjectLookupTable[h];
                 int renderIndex = 0;
-                if (h.elevation > 0.4f && h.elevation < 1.0f) {
+                // if (h.mElevation > 0.0f && h.mElevation < 6.0f) {
+                if (h.mElevation > 0.0f && h.mElevation < 1.0f) {
                     renderIndex = 0;
-                    // Quaternion rotation = hexGameObject.transform.rotation;
-                    // rotation.y += 90;
-                    GameObject.Instantiate(mHexGrasslandHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
+                    if (h.mMoisture > -0.3f) {
+                        GameObject.Instantiate(mHexGrasslandHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
+                    }
+                    else if (h.mMoisture < -0.3f) {
+                        GameObject.Instantiate(mHexDesertHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
+                    }
                 }
-                else if (h.elevation > 0f) {
-                    // renderIndex = 1;
-                }
-                if (h.elevation > 1.0f) {
+                else if (h.mElevation > 1.0f) {
                     // renderIndex = 3;
                     GameObject.Instantiate(mHexMountainHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
                 }
-                if (h.elevation < 0.4f && h.elevation > 0f) {
-                    // renderIndex = 2;
-                    GameObject.Instantiate(mHexDesertHex, hexGameObject.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)), hexGameObject.transform);
-                }
-
-                if (h.elevation < 0f) {
+                else if (h.mElevation < 0f) {
                     Vector3 hexPosition = hexGameObject.transform.position;
                     hexPosition.y -= 1;
                     GameObject waterFloor = GameObject.Instantiate(mHexPrefab, hexPosition, Quaternion.identity, hexGameObject.transform);
@@ -152,9 +148,7 @@ public class HexMap : MonoBehaviour {
                     mr.material = mHexMaterials[renderIndex];
                 }
 
-                // MeshRenderer mr = hexGameObject.GetComponentInChildren<MeshRenderer>();
-                // mr.material = mHexMaterials[renderIndex];
-                // hexGameObject.GetComponentInChildren<TextMesh>().text = string.Format("{0}", h.elevation);
+                // hexGameObject.GetComponentInChildren<TextMesh>().text = string.Format("{0}", h.mMoisture);
             }
         }
     }

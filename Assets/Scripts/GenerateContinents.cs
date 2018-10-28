@@ -37,12 +37,31 @@ public class GenerateContinents : HexMap {
             for (int row = 0; row < getNumRows(); row++) {
 				Hex h = getHexLookup(column, row);
 				float n = 
-                    Mathf.PerlinNoise( ((float)column/Mathf.Max(getNumColumns(),getNumRows()) / noiseResolution) + noiseOffset.x, 
-                        ((float)row/Mathf.Max(getNumColumns(),getNumRows()) / noiseResolution) + noiseOffset.y )
+                    Mathf.PerlinNoise( ((float)column/Mathf.Max(getNumColumns(), getNumRows()) / noiseResolution) + noiseOffset.x, 
+                        ((float)row/Mathf.Max(getNumColumns(), getNumRows()) / noiseResolution) + noiseOffset.y )
                     - 0.5f;
-				h.elevation += n * noiseScale;
+				h.mElevation += n * noiseScale;
 			}
 		}
+
+		// Simulate rainfall/moisture (probably just Perlin it for now) and set plains/grasslands + forest 
+        noiseResolution = 0.05f;
+        noiseOffset = new Vector2( Random.Range(0f, 1f), Random.Range(0f, 1f) ); 
+
+        noiseScale = 2f;
+
+        for (int column = 0; column < getNumColumns(); column++)
+        {
+            for (int row = 0; row < getNumRows(); row++)
+            {
+                Hex h = getHexLookup(column, row);
+                float n = 
+                    Mathf.PerlinNoise( ((float)column/Mathf.Max(getNumColumns(), getNumRows()) / noiseResolution) + noiseOffset.x, 
+                        ((float)row/Mathf.Max(getNumColumns(), getNumRows()) / noiseResolution) + noiseOffset.y )
+                    - 0.5f;
+                h.mMoisture = n * noiseScale;
+            }
+        }
 
 	}
 
@@ -58,8 +77,8 @@ public class GenerateContinents : HexMap {
 					Tuple<int, int> selection = new Tuple<int, int>(x + dx, y + dy);
 					selection = wrapCordinates(selection);		
 					h = getHexLookup(selection.First, selection.Second);
-					h.elevation = baseHeight * Mathf.Lerp( 1f, 0.25f, Mathf.Pow(distance(origin, h) / range,2f));
-					Debug.Log(h.elevation);
+					h.mElevation = baseHeight * Mathf.Lerp( 1f, 0.25f, Mathf.Pow(distance(origin, h) / range,2f));
+					// Debug.Log(h.mElevation);
 			}
 		}
 	}

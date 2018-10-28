@@ -25,7 +25,8 @@ public class Hex {
     public readonly int mLocY;  // Row
     public readonly int mModS;
 
-    public float elevation = -0.5f;
+    public float mElevation = -0.5f;
+    public float mMoisture;
 
     static readonly float mWidthMultiplier = Mathf.Sqrt(3) / 2;
 
