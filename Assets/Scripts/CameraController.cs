@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour
         }
         if (Application.isFocused)
         {
-            if (Input.mousePosition.x > screenWidth)
+            if (Input.mousePosition.x > screenWidth - 10)
             {
                 transform.Translate(new Vector3(mSpeed * Time.deltaTime, 0, 0));
             }
@@ -69,12 +69,12 @@ public class CameraController : MonoBehaviour
                 transform.Translate(new Vector3(-mSpeed * Time.deltaTime, 0, 0));
             }
 
-            if (Input.mousePosition.y > screenHeight)
+            if (Input.mousePosition.y > screenHeight - 10)
             {
                 transform.Translate(new Vector3(0, 0, mSpeed * Time.deltaTime));
             }
 
-            if (Input.mousePosition.y < 0)
+            if (Input.mousePosition.y < 10)
             {
                 transform.Translate(new Vector3(0, 0, -mSpeed * Time.deltaTime));
             }
