@@ -3,7 +3,15 @@ guid: 0a0b0ddc9e69b8641be5306e3567c3dd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mHexPrefab: {fileID: 1963759671522398, guid: 688ba16db0c092f469742f3cfdface2e,
+      type: 2}
+  - mHexGrasslandHex: {fileID: 1850269362907668, guid: 649829b15775aaf40b0355ac34243bf0,
+      type: 2}
+  - mHexDesertHex: {fileID: 1804220327636284, guid: 25a5434a5440e6f409c6d804686f82f7,
+      type: 2}
+  - mHexMountainHex: {fileID: 1666024360089298, guid: dbf0896aac64c9c41a80468ee4fbe35b,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

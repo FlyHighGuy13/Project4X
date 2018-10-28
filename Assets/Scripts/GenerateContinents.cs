@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GenerateContinents : HexMap {
 
-	// private int[,] mHexTable;
+	//private int[,] mHexTable;
 
 	public GenerateContinents() {}
 
