@@ -62,7 +62,6 @@ public class GenerateContinents : HexMap {
                 h.mMoisture = n * noiseScale;
             }
         }
-
 	}
 
 	public void elevateArea(int x, int y, int range, float baseHeight = 0.8f) {
